@@ -62,3 +62,7 @@ flow transactions send cadence/transactions/CancelScheduler.cdc \
     {"type":"UInt64","value":"1"}
   ]'
 
+# List all contracts
+
+flow accounts get f8d6e0586b0a20c7 --network emulator
+

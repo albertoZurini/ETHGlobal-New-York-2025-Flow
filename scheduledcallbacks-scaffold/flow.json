@@ -40,13 +40,13 @@
 		"TollBooth": {
 			"source": "cadence/contracts/TollBooth.cdc",
 			"aliases": {
-				"testing": "0000000000000007"
+				"testing": "0000000000000008"
 			}
 		},
 		"TollBoothLoopCallbackHandler": {
 			"source": "cadence/contracts/TollBoothLoopCallbackHandler.cdc",
 			"aliases": {
-				"testing": "0000000000000007"
+				"testing": "0000000000000008"
 			}
 		}
 	},
