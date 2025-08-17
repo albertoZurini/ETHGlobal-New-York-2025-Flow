@@ -73,7 +73,7 @@ app.get("/", async (req, res) => {
   }
 
   const now = Date.now();
-  const fiveMinutesInMillis = 5 * 60 * 1000;
+  const fiveMinutesInMillis = 30 * 1000;
   const timeDifference = now - lastTransferTimestamp;
 
   if (timeDifference < fiveMinutesInMillis) {
