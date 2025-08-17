@@ -36,7 +36,7 @@ transaction(
         let fees <- vaultRef.withdraw(amount: est.flowFee ?? 0.0) as! @FlowToken.Vault
 
         let handlerCap = signer.capabilities.storage
-            .issue<auth(FlowCallbackScheduler.Execute) &{FlowCallbackScheduler.CallbackHandler}>(/storage/TollBoothLoopCallbackHandler)
+            .issue<auth(FlowCallbackScheduler.Execute) &{FlowCallbackScheduler.CallbackHandler}>(/storage/CounterLoopCallbackHandler)
 
         let receipt = FlowCallbackScheduler.schedule(
             callback: handlerCap,

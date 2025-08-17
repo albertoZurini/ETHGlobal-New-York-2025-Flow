@@ -36,6 +36,18 @@
 			"aliases": {
 				"testing": "f8d6e0586b0a20c7"
 			}
+		},
+		"TollBooth": {
+			"source": "cadence/contracts/TollBooth.cdc",
+			"aliases": {
+				"testing": "0000000000000007"
+			}
+		},
+		"TollBoothLoopCallbackHandler": {
+			"source": "cadence/contracts/TollBoothLoopCallbackHandler.cdc",
+			"aliases": {
+				"testing": "0000000000000007"
+			}
 		}
 	},
 	"dependencies": {
@@ -123,7 +135,9 @@
 			"emulator-account": [
 				"Counter",
 				"CounterCallbackHandler",
-				"CounterLoopCallbackHandler"
+				"CounterLoopCallbackHandler",
+				"TollBooth",
+				"TollBoothLoopCallbackHandler"
 			]
 		}
 	}
