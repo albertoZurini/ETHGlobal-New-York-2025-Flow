@@ -1,8 +1,14 @@
+# Run the emulator
+
+flow emulator --scheduled-callbacks --block-time 1s
+
+# Deploy the contracts
+
 flow project deploy --network emulator
 
 # Initialize handler capabilities
 
-flow transactions send cadence/transactions/TollBooth_ScheduleTransferBalanceInLoop.cdc \
+flow transactions send cadence/transactions/TollBooth_InitTollBoothLoopCallbackHandler.cdc \
   --network emulator \
   --signer emulator-account
 
@@ -34,6 +40,8 @@ flow transactions send cadence/transactions/ScheduleIncrementInLoop.cdc \
 # Get balances values
 
 flow scripts execute cadence/scripts/GetBalances.cdc --network emulator
+
+flow scripts execute cadence/scripts/GetLastTransactionTime.cdc --network emulator
 
 # Test function
 

@@ -7,12 +7,17 @@ access(all) contract TollBooth {
     // Declare a public, variable boolean to control transfer logic.
     access(all) var isTransferAllowed: Bool
 
+    // A new global variable to store the timestamp of the last successful transfer.
+    // It's an optional UFix64, so it will be `nil` until the first transfer occurs.
+    access(all) var lastTransferTimestamp: UFix64?
+
     // The init function is the contract's constructor.
     // It is only called once when the contract is deployed.
     init() {
         self.balance1 = 100
         self.balance2 = 0
         self.isTransferAllowed = false // Transfers are disabled by default.
+        self.lastTransferTimestamp = nil // Initialize the timestamp as nil.
     }
 
     // Transfers 1 from balance1 to balance2.
@@ -25,6 +30,8 @@ access(all) contract TollBooth {
         if self.isTransferAllowed {
             self.balance1 = self.balance1 - 1
             self.balance2 = self.balance2 + 1
+            // On successful transfer, update the timestamp to the current block's timestamp.
+            self.lastTransferTimestamp = getCurrentBlock().timestamp
         }
     }
 
@@ -46,6 +53,12 @@ access(all) contract TollBooth {
     // Public getter for balance2
     access(all) fun getBalance2(): Int {
         return self.balance2;
+    }
+
+    // New public getter for the last transfer timestamp.
+    // Returns an optional UFix64 (`UFix64?`).
+    access(all) fun getLastTransferTimestamp(): UFix64? {
+        return self.lastTransferTimestamp
     }
 
     // Sets the boolean flag to enable or disable transfers.
