@@ -2,13 +2,14 @@ flow project deploy --network emulator
 
 # Initialize handler capabilities
 
-flow transactions send cadence/transactions/TollBooth_InitTollBoothCallbackHandler.cdc \
+flow transactions send cadence/transactions/TollBooth_ScheduleTransferBalanceInLoop.cdc \
   --network emulator \
   --signer emulator-account
 
 # Schedule an increment
 
-flow transactions send cadence/transactions/TollBooth_ScheduleTranserBalanceInLoop.cdc \
+```
+flow transactions send cadence/transactions/TollBooth_ScheduleTransferBalanceInLoop.cdc \
   --network emulator \
   --signer emulator-account \
   --args-json '[
@@ -17,7 +18,19 @@ flow transactions send cadence/transactions/TollBooth_ScheduleTranserBalanceInLo
     {"type":"UInt64","value":"1000"},     
     {"type":"Optional","value":null}
   ]'
+```
 
+```
+flow transactions send cadence/transactions/ScheduleIncrementInLoop.cdc \
+  --network emulator \
+  --signer emulator-account \
+  --args-json '[
+    {"type":"UFix64","value":"2.0"},      
+    {"type":"UInt8","value":"1"},        
+    {"type":"UInt64","value":"1000"},     
+    {"type":"Optional","value":null}
+  ]'
+```
 # Get balances values
 
 flow scripts execute cadence/scripts/GetBalances.cdc --network emulator
